@@ -22,8 +22,6 @@ This project is associated with RESTFul Microservices. which is a human resource
 
 6. Message Queues: AWS SQS/SNS  
 7. Online Storage: AWS S3
-<<<<<<< HEAD
-=======
 
 
 ### How to Run?
@@ -33,11 +31,11 @@ This project is associated with RESTFul Microservices. which is a human resource
 install the angular with npm
 
     npm install -g @angular/cli
-    
+
 start the  front end application in the **Hawkeyes/client**
 
     ng serve
-    
+
 <img src="https://lewisphotoes.s3.us-east-2.amazonaws.com/1603416810(1).jpg">
 
 
@@ -45,7 +43,41 @@ start the  front end application in the **Hawkeyes/client**
 
 <img src="https://lewisphotoes.s3.us-east-2.amazonaws.com/1603416999(1).jpg">
 
-4. Conifugre the Spring Boot Application
+4. Configure the Spring Boot Application
+
+Modify the configuration in **Application.Properties**
+
+    spring.jpa.database = MYSQL
+    spring.datasource.driverClassName=com.mysql.cj.jdbc.Driver
+    spring.jpa.hibernate.ddl-auto = update
+    spring.datasource.url=jdbc:mysql://localhost:3307/^^^^?serverTimezone=UTC
+    spring.datasource.username=
+    spring.datasource.password=
+    spring.jpa.show-sql = 
+
+Configure the JWT Spring Security:
+
+    	@Override
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
+    	// We don't need CSRF for this example
+    	httpSecurity.csrf().disable()
+    			// dont authenticate this particular request
+    			.authorizeRequests().antMatchers("/login","/register").permitAll().
+    			// all other requests need to be authenticated
+    			anyRequest().authenticated().and().
+    			// make sure we use stateless session; session won't be used to
+    			// store user's state.
+    			exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
+    			.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+    
+    	// Add a filter to validate the tokens with every request
+    	httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+
+
+		httpSecurity.cors();
+	}
+
+## Sample Pages
 
 
 
@@ -53,17 +85,6 @@ start the  front end application in the **Hawkeyes/client**
 
 
 
->>>>>>> d6f2929ae459c36e8e0715442ab5b809e924a28d
 
 
-### How to Run?
-
-1. Install the Node.js 
-2. install the Angular-cli 
- 
-    npm install -g @angular/cli
    
-
-
-
-
