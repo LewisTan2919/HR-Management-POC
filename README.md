@@ -80,6 +80,27 @@ Configure the JWT Spring Security:
 ## Sample Pages
 
 
+Login page
+
+<img src="https://lewisphotoes.s3.us-east-2.amazonaws.com/New+folder/loginPage.jpg">
+
+
+Register Page
+
+<img src="https://lewisphotoes.s3.us-east-2.amazonaws.com/New+folder/registerPage.jpg">
+
+
+
+Once logged in the system, get the JWT token as public key
+
+<img src="https://lewisphotoes.s3.us-east-2.amazonaws.com/New+folder/1603434503(1).jpg">
+
+
+add photo from local system, upload/get the images from AWS s3, and information from mysql database
+
+<img src="https://lewisphotoes.s3.us-east-2.amazonaws.com/New+folder/1603437218(1).jpg">
+
+
 
 
 
