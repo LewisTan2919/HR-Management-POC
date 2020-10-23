@@ -1,0 +1,64 @@
+<h1>Information Page</h1>
+
+
+<div>
+    <h1>{{id}}</h1>
+</div>
+<div>
+    <input type="file" (change)="onChange($event)">
+</div>
+
+<div>
+  <img [(src)]="uploadedPhotoUrl" class="img-thumbnail" >
+</div>
+
+
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="employee.name">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="Age">Age</label>
+      <input type="text" class="form-control" id="Age" name="name" [(ngModel)]="employee.age">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="jobTitle">Job Title</label>
+    <input type="text" class="form-control" id="jobTitle" name="jobTitle" [(ngModel)]="employee.jobTitle">
+  </div>
+  <div class="form-group">
+    <label for="Description">Description</label>
+    <textarea class="form-control" id="Description" name="Description" [(ngModel)]="employee.description" rows="3"></textarea>
+    <p>{{employee.description}}</p>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6 col-lg-12">
+      <label for="departments">Department: </label>
+      <select [(ngModel)]="employee.department.id" id="departments" name="departments" (change)="changeDepartment($event)" class="form-control">
+        <option *ngFor="let department of departments; let i = index"  [value]="departments[i].id">
+          {{departments[i].name}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+  </div>
+  <div>
+    <button class="btn btn-success"(click)="submit()">Upload</button>
+  </div>
+</form>
+
+
+
+   
+  
+
+
+
+
+
+
+
+

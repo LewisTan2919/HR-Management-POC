@@ -1,0 +1,19 @@
+<div class="container text-center col-md-6 mx-auto">   
+<form class="form-signin">
+    <div class="form-group">
+      <label for="">Email address</label>
+      <input type="email" [(ngModel)]="username" name="username"  class="form-control rounded-0" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="">Password</label>
+      <input type="password" [(ngModel)]="password" name="password" class="form-control rounded-0" placeholder="Password">
+    </div>
+
+    <div class="form-group">
+        <label for="">Re-Enter Password</label>
+        <input type="password" [(ngModel)]="passwordRepeat" name="passwordRepeat"  class="form-control rounded-0" placeholder="Re-Enter Password">
+      </div>
+
+    <button class="btn btn-lg btn-primary btn-block" type="button" (click)="register()">Register</button>
+  </form>
+</div>

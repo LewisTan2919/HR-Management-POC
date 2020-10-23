@@ -1,0 +1,21 @@
+<div class="container text-center col-md-6 mx-auto">
+<form class="form-signin">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <div class="form-group">
+        <label for="">Email</label>
+        <input [(ngModel)]="user.username"  name="email" type="text" class="form-control rounded-0" required>
+    </div>
+    <div class="form-group">
+        <label for="">Password</label>
+        <input  [(ngModel)]="user.password"  name="password" type="password" class="form-control rounded-0" required>
+    </div>
+    <div class="checkbox mb-3">
+      <label>
+       <a routerLink="/register" routerLinkActive="active">Create User?</a>
+      </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="button" (click)="loginAction(user)">Sign in</button>
+    
+  </form>
+
+</div>
