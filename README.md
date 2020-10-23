@@ -26,7 +26,7 @@ This project is associated with RESTFul Microservices. which is a human resource
 
 ### How to Run?
 1. Install the Node.js 
-2. install the Angular-cli  
+2. Install the Angular-cli  
 
 install the angular with npm
 
@@ -37,6 +37,21 @@ start the  front end application in the **Hawkeyes/client**
     ng serve
     
 <img src="https://lewisphotoes.s3.us-east-2.amazonaws.com/1603416810(1).jpg">
+
+
+3. Configure the S3 Buckey API Key in the **file-upload.service.ts**
+
+<img src="https://lewisphotoes.s3.us-east-2.amazonaws.com/1603416999(1).jpg">
+
+4. Conifugre the Spring Boot Application
+
+
+
+
+
+
+
+
    
 
 
