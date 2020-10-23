@@ -21,7 +21,15 @@ This project is associated with RESTFul Microservices. which is a human resource
 5. Microservices: Spring Cloud, AWS EC2
 
 6. Message Queues: AWS SQS/SNS  
+7. Online Storage: AWS S3
 
+
+### How to Run?
+
+1. Install the Node.js 
+2. install the Angular-cli 
+ 
+    npm install -g @angular/cli
    
 
    
