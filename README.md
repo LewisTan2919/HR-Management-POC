@@ -50,7 +50,7 @@ Modify the configuration in **Application.Properties**
     spring.jpa.database = MYSQL
     spring.datasource.driverClassName=com.mysql.cj.jdbc.Driver
     spring.jpa.hibernate.ddl-auto = update
-    spring.datasource.url=jdbc:mysql://localhost:3307/^^^^?serverTimezone=UTC
+    spring.datasource.url=
     spring.datasource.username=
     spring.datasource.password=
     spring.jpa.show-sql = 
