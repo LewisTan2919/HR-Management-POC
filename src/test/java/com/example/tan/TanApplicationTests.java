@@ -20,4 +20,10 @@ class TanApplicationTests {
 
     }
 
+    @Test
+    void userRepositoryTest()
+    {
+        System.out.println(repository.findAllUsername());
+    }
+
 }

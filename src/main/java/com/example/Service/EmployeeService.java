@@ -24,4 +24,9 @@ public class EmployeeService {
        return  repository.save(employee);
     }
 
+    public Employee getEmployee(int id)
+    {
+        return repository.findById(id).orElse(null);
+    }
+
 }

@@ -21,10 +21,6 @@ public class RegisterController {
     @Autowired
     JwtUserDetailsService jwtUserDetailsService;
 
-    @RequestMapping("fuck")
-    public String sayHello() {
-        return "demo1";
-    }
 
     @CrossOrigin
     @PostMapping("register")

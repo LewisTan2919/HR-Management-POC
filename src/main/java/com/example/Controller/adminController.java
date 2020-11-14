@@ -5,13 +5,11 @@ import com.example.Entity.Department;
 import com.example.Entity.Employee;
 import com.example.Service.DepartmentService;
 import com.example.Service.EmployeeService;
+import com.example.Service.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -25,6 +23,9 @@ public class adminController {
 
     @Autowired
     EmployeeService employeeService;
+
+    @Autowired
+    JwtUserDetailsService jwtUserDetailsService;
 
 
     @CrossOrigin
@@ -61,5 +62,18 @@ public class adminController {
         return ResponseEntity.ok(departments);
     }
 
+    @CrossOrigin
+    @GetMapping("/employee/{id}")
+    public ResponseEntity<?>getEmployee(@PathVariable("id") int id)
+    {
+        Employee employee= employeeService.getEmployee(id);
+        return ResponseEntity.ok(employee);
+    }
 
+    @CrossOrigin
+    @GetMapping("/usernames")
+    public ResponseEntity<?> getUsernames()
+    {
+        return ResponseEntity.ok(jwtUserDetailsService.getUsernames());
+    }
 }

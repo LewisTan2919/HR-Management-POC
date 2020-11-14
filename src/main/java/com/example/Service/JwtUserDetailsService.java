@@ -49,4 +49,10 @@ public class JwtUserDetailsService implements UserDetailsService {
 		return jwtTokenUtil.generateToken(userDetails);
 	}
 
+
+	public List<String>getUsernames()
+	{
+		return repository.findAllUsername();
+	}
+
 }

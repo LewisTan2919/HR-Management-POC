@@ -15,6 +15,8 @@ export class EmployeeService {
 
    private uploadEmployeeUrl="http://localhost:4040/employee"
 
+   private getEmployeeUrl='http://localhost:4040/employee/'
+
    httpOptions = {
     headers:new HttpHeaders({
       'Access-Control-Allow-Origin':'*',
@@ -41,5 +43,10 @@ export class EmployeeService {
   {
   
     return this._http.post<Employee>(this.uploadEmployeeUrl,employee,this.httpOptions)
+  }
+
+  getEmployee(employeeId:Number)
+  {
+    return this._http.get<Employee>(this.getEmployeeUrl+employeeId,this.httpOptions)
   }
 }

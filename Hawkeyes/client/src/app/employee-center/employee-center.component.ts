@@ -1,6 +1,7 @@
 import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import{FileUploadService}from '../file-upload.service'
-import{ActivatedRoute} from '@Angular/router'
+import{ActivatedRoute,Router} from '@Angular/router'
+
 import{EmployeeService}from '../employee.service'
 import { error } from 'console';
 import{Department}from '../department'
@@ -20,7 +21,7 @@ export class EmployeeCenterComponent implements OnInit {
   private toFile;
   departments=[];
   selectedDepartmentID:any;
-  uploadedPhotoUrl="https://lewisphotoes.s3.us-east-2.amazonaws.com/default.png";
+  uploadedPhotoUrl:any;
   employee=new Employee();
   
 
@@ -28,16 +29,26 @@ export class EmployeeCenterComponent implements OnInit {
 
 
 
-  constructor(private _fileUploadService:FileUploadService,private _route:ActivatedRoute,private _employeeService:EmployeeService) { }
+  constructor(private _fileUploadService:FileUploadService,private _route:ActivatedRoute,private _employeeService:EmployeeService,private _router:Router) { }
 
 
 
 
   ngOnInit(): void {
+    
     this.sub = this._route.params.subscribe(params => {
       this.id = params['id']; 
+      this.getEmployee(this.id).subscribe(data=>
+        {
+          this.employee=data
+          this.uploadedPhotoUrl=this.employee.photoUrl
+        },error=>
+        {
+          console.log(error)
+        })
    });
-
+   if(this.id<=0)
+   return;
    this.employee.department=new Department()
    this.getDepartments()
   }
@@ -46,7 +57,16 @@ export class EmployeeCenterComponent implements OnInit {
   onChange(event)
   {
     this.toFile=event.target.files;
+    if(event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+         this.uploadedPhotoUrl = event.target.result;
+      }
   }
+}
 
 
 
@@ -63,7 +83,13 @@ export class EmployeeCenterComponent implements OnInit {
           console.error(error)
           alert("update fails!")
         })
+    }).then(()=>
+    {
+      this._router.navigate(["/dashboard"])
     })
+
+  
+    
   }
 
 
@@ -93,6 +119,11 @@ export class EmployeeCenterComponent implements OnInit {
   {
     this.selectedDepartmentID=event.target.value;
     console.log('chosen department id is:'+this.employee.department.id)
+  }
+
+  getEmployee(id:Number)
+  {
+    return this._employeeService.getEmployee(id)
   }
 
 }
